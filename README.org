@@ -1,0 +1,32 @@
+#+title: isl-spec-plus
+#+author: Lucas Sta Maria
+#+email: lucas@priime.dev
+
+A simple package that builds on ~#lang isl-spec~, enabling it to
+interface with [[https://github.com/hasu/emacs-ob-racket][ob-racket]].
+
+** Modifications
+
++ ~define~ in ~#lang isl-spec~ is only permitted at the top-level. Since
+  ~ob-racket~ places the contents of a code-block in a ~let~ expression,
+  this will error. Instead of providing ~#lang isl-spec~'s ~define~, this
+  package provides ~#lang racket~'s ~define~ since it can be used
+  anywhere.
++ ~let~ in ~#lang isl-spec~ further only allows a single expression in its
+  body. This is problematic if we want multiple forms, such as
+  multiple ~define~ forms. This package again provides ~#lang racket~'s
+  define to compensate.
++ the ~check-property~ macro in ~#lang isl-spec~ is also only permitted in
+  the top-level. I copy the code from its main module, removing the
+  top-level check, and re-provide it in lieu of ~isl-spec~'s ~check-property~.
++ ~ob-racket~ uses ~write~ as the last form to display the last expression
+  in the result of evaluating a code-block. ~write~ isn't provided in
+  ~#lang isl-spec~. Since it isn't provided in ~#lang isl-spec~ (and so
+  shouldn't be used in the code-block), /and/ it's the last form in
+  ~ob-racket~, I made an interesting hack:
+  + The ~test-engine~ tests don't run the tests by default in a
+    code-block. ~write~ acts as the conclusion of a program, so ~#lang
+    isl-spec-plus~ rewrites ~write~ to use ~#lang racket~'s ~write~ and
+    output the last expression. After writing the last expression, it
+    then /runs the tests/, printing any failed checks (and nothing
+    otherwise).
