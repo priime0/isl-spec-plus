@@ -5,6 +5,8 @@
 A simple package that builds on ~#lang isl-spec~, enabling it to
 interface with [[https://github.com/hasu/emacs-ob-racket][ob-racket]].
 
+Attribution: this builds on top of [[https://github.com/dbp/isl-spec][isl-spec]].
+
 ** Modifications
 
 + ~define~ in ~#lang isl-spec~ is only permitted at the top-level. Since
