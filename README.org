@@ -2,7 +2,7 @@
 #+author: Lucas Sta Maria
 #+email: lucas@priime.dev
 
-A collection of packages that build on ~#lang isl-spec~ and ~#lang lsl~, enabling them to interface with [[https://github.com/hasu/emacs-ob-racket][ob-racket]] in Emacs.
+A collection of packages that build on ~#lang isl-spec~ and ~#lang lsl~, enabling them to interface with [[https://github.com/hasu/emacs-ob-racket][ob-racket]] in Emacs. These packages relate to Northeastern's =CS 2800 - Logic and Computation= course.
 
 /Note/: These hashlangs should not be used in substitution of ~#lang isl-spec~ and ~#lang lsl~ for any proper assignments.
 
