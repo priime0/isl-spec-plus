@@ -22,7 +22,7 @@
 (require (except-in isl-spec define let check-property lambda))
 
 (provide (all-from-out isl-spec))
-(provide write define let)
+(provide write define let lambda)
 (provide check-property)
 
 (define (write datum [out (current-output-port)])
