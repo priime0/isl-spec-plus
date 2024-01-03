@@ -8,6 +8,18 @@ A collection of packages that build on ~#lang isl-spec~ and ~#lang lsl~, enablin
 
 Attribution: this builds on top of [[https://github.com/dbp/isl-spec][isl-spec]] and [[https://github.com/logiccomp/lsl/tree/main][lsl]], lifting some existing code to accomodate certain hacks.
 
+** Installation
+
+Since I doubt a lack of interaction with these packages (Emacs and Org users are few at Northeastern), there's currently no incentive for me to put these on the Racket package server. Instead, readers can install the packages manually:
+
+Clone the repository and ~raco pkg install~ in each package directory:
+
+#+begin_src sh
+git clone https://github.com/priime0/logic-plus
+cd isl-spec-plus && raco pkg install --auto --skip-installed
+cd ../lsl-plus && raco pkg install --auto --skip-installed
+#+end_src
+
 ** Modifications
 
 + ~define~ in ~#lang isl-spec~ is only permitted at the top-level. Since ~ob-racket~ places the contents of a code-block in a ~let~ expression, this will error. Instead of providing ~#lang isl-spec~'s ~define~, this package provides ~#lang racket~'s ~define~ since it can be used anywhere.
